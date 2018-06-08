@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Please log in"
+AuthUserFile /WebServers/.htpasswd
+require valid-user

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<?php $db = mysql_connect ("localhost","gtc","123456");
+mysql_select_db("gtc_site_db",$db); 
+if (isset($_POST['realname'])) {$realname = $_POST['realname'];}
+if (isset($_POST['companyname'])) {$companyname = $_POST['companyname'];}
+if (isset($_POST['mailingaddress'])) {$mailingaddress = $_POST['mailingaddress'];}
+if (isset($_POST['city'])) {$city = $_POST['city'];}
+if (isset($_POST['provstate'])) {$provstate = $_POST['provstate'];}
+if (isset($_POST['country'])) {$country = $_POST['country'];}
+if (isset($_POST['postzipcode'])) {$postzipcode = $_POST['postzipcode'];}
+if (isset($_POST['telephone'])) {$telephone = $_POST['telephone'];}
+if (isset($_POST['fax'])) {$fax = $_POST['fax'];}
+if (isset($_POST['email'])) {$email = $_POST['email'];}
+if (isset($_POST['url'])) {$url = $_POST['url'];}
+if (isset($_POST['booktype'])) {$booktype = $_POST['booktype'];}
+if (isset($_POST['quantity'])) {$quantity = $_POST['quantity'];}
+if (isset($_POST['cardtype'])) {$cardtype = $_POST['cardtype'];}
+if (isset($_POST['cardname'])) {$cardname = $_POST['cardname'];}
+if (isset($_POST['cardnumber'])) {$cardnumber = $_POST['cardnumber'];}
+if (isset($_POST['cardexpiry'])) {$cardexpiry = $_POST['cardexpiry'];}
+?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Book Order</title>
+</HEAD>
+
+<BODY>
+
+  <?php 
+if (isset($realname) && isset($companyname) && isset($mailingaddress) && isset($city) && isset($provstate) && isset($country) && isset($postzipcode) && isset($telephone) && isset($fax) && isset($email) && isset($url) && isset($booktype) && isset($quantity) && isset($cardtype) && isset($fcardname) && isset($cardnumber) && isset($cardexpiry))
+{
+
+$result = mysql_query ("INSERT INTO book_orders (realname, companyname, mailingaddress, city, provstate, country, postzipcode, telephone, fax, email, url, booktype,  quantity, cardtype, cardname, cardnumber, cardexpiry) VALUES ('realname', '$companyname', '$mailingaddress', '$city', '$provstate', '$country', '$postzipcode', '$telephone', '$fax', '$email', '$url', '$booktype', '$quantity', '$cardtype', '$cardname', '$cardnumber', '$cardexpiry')");
+
+  $to  = 'katsman@globaltradecorp.com, heimitz@globaltradecorp.com, sokolov@globaltradecorp.com';
+  $subject  = 'www.globaltradecorp.com - Book Order';
+  $headers  = 'MIME-Version: 1.0' . "\r\n";
+  $headers .= 'Content-type: text/plain; charset=iso-8859-1' . "\r\n";
+  $headers .= 'From: registration@globaltradecorp.com' . "\r\n";
+  $headers .= 'Cc: heimitz@globaltradecorp.com' . "\r\n";
+  $headers .= 'Cc: sokolov@globaltradecorp.com' . "\r\n";
+  $headers .= 'Bcc: katsman@globaltradecorp.com' ;
+  mail("{$to}", "{$subject}", "Name: {$realname}\n
+   Company: {$companyname},\n
+   Mailing Address: {$mailingaddress},\n
+   City: {$city},\n
+   Province/State 1:  {$provstate},\n
+   Country: {$country},\n
+   Postal/ZIP Code: {$postzipcode},\n
+   Province/State: {$state},\n
+   Postal/Zip Code: {$zip},\n
+   Telephone: {$telephone},\n
+   Fax: {$fax},\n
+   E-mail: {$email},\n
+   Comments: {$comments},\n
+   Information Requested: Book Order", "{$headers}");
+   }
+?> 
+
+<center>
+<p>Your order was successfully received. You will be contacted regarding the status of your order.</p>
+</center>
+
+
+</BODY>
+
+</HTML>
+
