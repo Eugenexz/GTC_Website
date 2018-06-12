@@ -1,0 +1,23 @@
+<div class="wf-wrap">
+	<div class="wf-container-footer">
+		<div class="wf-container">
+			<?php
+			do_action( 'presscore_before_footer_widgets' );
+			dynamic_sidebar( $footer_sidebar );
+			?>
+		</div><!-- .wf-container -->
+	</div><!-- .wf-container-footer -->
+</div><!-- .wf-wrap -->
+
+
+
+<div class="wf-wrap">
+				<div class="wf-container-footer">
+					<div class="wf-container">
+						<?php
+						do_action( 'presscore_before_footer_widgets' );
+						dynamic_sidebar( $footer_sidebar );
+						?>
+					</div><!-- .wf-container -->
+				</div><!-- .wf-container-footer -->
+			</div><!-- .wf-wrap -->
